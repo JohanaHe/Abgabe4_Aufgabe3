@@ -3,7 +3,6 @@
 #### Wenn man den Algorithmus mit der Datei `big_graph.csv` laufen lässt, bekommt man folgende Ausgabe:
 
 strongly connected component: [993]
-
 <br> _strongly connected component_: [995]
 <br> _strongly connected component_: [999]
 <br> _strongly connected component_: [998]
