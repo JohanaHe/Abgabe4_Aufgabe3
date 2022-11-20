@@ -18,3 +18,11 @@ Um alle _starke Zusammenhangskomponenten_ in einem gerichteten Graphen zu finden
 <br> Ansonsten ist die Tiefensuche beendet. 
 - `transposeGraph`: In dieser Funktion wird der Graph transponiert. Das heißt die Kanten  des gerichteten ursprünglichen Graphens werden umgedreht, indem zwei ineinander verschachtelte `for-Schleifen` aufgerufen werden. Sofern sowohl eine Kante von dem Knoten a zu dem Knoten b vorhanden ist, als auch eine Kante von b zu a, muss keine Änderung vorgenommen werden. Das heißt, dass diese Funktion die Adjazenzmatrix des Graphen spiegelt. 
 - `dfsPrint2`: Vom Prinzip her funktioniert diese Funktion genauso wie `dfsPrint` und benutzt somit auch `dfsHelp`. Der einzige Unterschied besteht darin, dass`dfsPrint2` die Knoten des transponierten Graphens in der Reihenfolge besucht, die in der ersten Tiefensuche in `DFSOrder` gespeichert wurde. Das entspricht der Sortierung der Knoten, die durch die Tiefensuche im gegebenen Graphen entstanden ist. 
+
+### Komponentengraph:
+
+Der Komponentengraph des Graphen, der durch die Datei `big_graph.csv` dargestellt wird, sieht folgendermaßen aus:
+
+![image](Komponentengraph_big_graph.jpg)
+
+Man kann anhand des Fotos sehr gut erkennen, dass der Graph drei große starke Zusammenhangskomponenten enthält. 
