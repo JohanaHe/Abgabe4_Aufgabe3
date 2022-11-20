@@ -1,6 +1,7 @@
 package submission;
 
 import java.util.Stack;
+import java.io.*;
 
 class SCC {
 
@@ -65,6 +66,10 @@ class SCC {
 		}
 	}
 	
+	/** DFS using the computed finishing times as the order of vertices in the main loop
+	 * 
+	 * @param adj adjacency matrix of the graph
+	 */
 	static void dfsPrint2(int[][] adj) {
 
 		boolean[] visited = new boolean[adj.length];
@@ -80,7 +85,46 @@ class SCC {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		
+		String fileName = "/Users/johannaheiss/Desktop/big_graph.csv";
+		String currentLine;
+		FileInputStream input;
+		try {
+			input = new FileInputStream(fileName);
+		} catch (FileNotFoundException e) {
+			input = null;
+			e.printStackTrace();
+		}
+		DataInputStream myInput = new DataInputStream(input);
+		int l = 0;
+		String[][] data = new String[0][];
+		
+		while ((currentLine = myInput.readLine()) != null) {
+			++l;
+			String[][] newData = new String[l][2];
+			String arr[] = currentLine.split(",");
+			newData[l-1] = arr;
+		
+		System.arraycopy(data,  0,  newData,  0,  l-1);
+		data = newData;
+		}
+		
+		int[][] adj = new int[data.length][data[0].length];
+		
+		for (int i = 0; i < adj.length; i++) {
+			for (int j = 0; j < adj[0].length; j++) {
+				adj[i][j] = Integer.parseInt(data[i][j]);
+			}
+		}
+		
+		dfsPrint(adj);
+		//System.out.println("DFS: " + DFSOrder.toString());
+		
+		transposeGraph(adj);
+		dfsPrint2(adj);
+		//System.out.println("DFSTransposedGraph: " + DFSOrder.toString());
+		
 
 		//examples 
 		/*
@@ -107,7 +151,7 @@ class SCC {
 		transposeGraph(g1);
 		dfsPrint(g1);
 		*/
-		
+		/*
 		int[][] g2 = new int[7][7];
 		g2[0][1] = 1;
 		g2[1][2] = 1;
@@ -124,7 +168,7 @@ class SCC {
 		transposeGraph(g2);
 		dfsPrint2(g2);
 		//System.out.println("DFSTransposedGraph: " + DFSOrder.toString());
-		
+		*/
 
 	}
 }
